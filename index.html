@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IUGALE - Premium Client SEO Performance Dashboard</title>
+  <!-- Favicon (Minimal SVG) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%230f172a%22/><text y=%2265%22 x=%2220%22 fill=%22white%22 font-family=%22sans-serif%22 font-weight=%22bold%22 font-size=%2250%22>S</text></svg>">
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  
+  <!-- DASHBOARD HEADER -->
+  <header class="dashboard-header">
+    <div class="header-left">
+      <div class="logo-wrapper">
+        <div class="logo-icon">I</div>
+        IUGALE
+      </div>
+      <div class="header-divider"></div>
+      <div class="client-profile-group">
+        <span class="client-name" id="hdr-client-name">Tirumalai Eye Clinic</span>
+        <span class="dashboard-title">SEO Performance Dashboard</span>
+      </div>
+    </div>
+    
+    <div class="header-mid">
+      <span class="reporting-period-label">Reporting Period</span>
+      <span class="reporting-period-date">01 September 2026 – 30 September 2026</span>
+    </div>
+    
+    <div class="header-right">
+      <div class="services-checklist">
+        <div class="service-check-item">✓ On-Page</div>
+        <div class="service-check-item">✓ Technical</div>
+        <div class="service-check-item">✓ Local SEO</div>
+        <div class="service-check-item">✓ GBP</div>
+        <div class="service-check-item">✓ Content</div>
+        <div class="service-check-item">✓ Backlinks</div>
+      </div>
+      <div class="manager-card">
+        <div class="manager-avatar" id="hdr-mgr-avatar">AN</div>
+        <div class="manager-info">
+          <span class="manager-name" id="hdr-mgr-name">Anita Nair</span>
+          <span class="manager-role">Account Manager</span>
+        </div>
+      </div>
+      <button class="btn-report" id="btn-export-pdf" title="Export Client Report to PDF">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width: 16px; height: 16px;">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+        </svg>
+        Export PDF
+      </button>
+    </div>
+  </header>
+  
+  <!-- MAIN CONTAINER -->
+  <main class="dashboard-container">
+    
+    <!-- SECTION 1: SEO ACTIVITY CALENDAR -->
+    <section class="dashboard-section" id="sec-calendar">
+      <div class="section-info">
+        <h2 class="section-title">SEO Activity Calendar</h2>
+        <p class="section-subtitle">Real-time daily tracker of optimizations, contents and listings completed by IUGALE this month</p>
+      </div>
+      
+      <div class="calendar-wrapper">
+        <div class="calendar-header-day">SUN</div>
+        <div class="calendar-header-day">MON</div>
+        <div class="calendar-header-day">TUE</div>
+        <div class="calendar-header-day">WED</div>
+        <div class="calendar-header-day">THU</div>
+        <div class="calendar-header-day">FRI</div>
+        <div class="calendar-header-day">SAT</div>
+        
+        <div class="calendar-days-grid" id="calendar-days-container">
+          <!-- Dynamically populated -->
+        </div>
+        
+        <div class="calendar-legend-bar">
+          <div class="legend-item"><span class="legend-color-dot legend-color-blog"></span>Blog Published</div>
+          <div class="legend-item"><span class="legend-color-dot legend-color-opt"></span>Page Optimized</div>
+          <div class="legend-item"><span class="legend-color-dot legend-color-tech"></span>Technical SEO Fix</div>
+          <div class="legend-item"><span class="legend-color-dot legend-color-gbp"></span>GBP Update</div>
+          <div class="legend-item"><span class="legend-color-dot legend-color-link"></span>Backlink Acquired</div>
+          <div class="legend-item"><span class="legend-color-dot legend-color-local"></span>Local SEO Activity</div>
+        </div>
+      </div>
+      
+      <!-- Activity Log Table -->
+      <div class="card table-card">
+        <div class="table-header-row">
+          <span class="table-header-title">SEO Activity Log</span>
+          <input type="text" class="table-search-input" id="activity-search" placeholder="Search activities...">
+        </div>
+        <div class="modern-table-wrapper">
+          <table class="modern-table" id="activity-log-table">
+            <thead>
+              <tr>
+                <th style="width: 15%;">Date</th>
+                <th style="width: 20%;">Activity Type</th>
+                <th>Work Description</th>
+                <th style="width: 15%;">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+    
+    <!-- SECTION 2: WORK COMPLETED THIS MONTH -->
+    <section class="dashboard-section" id="sec-completed">
+      <div class="section-info">
+        <h2 class="section-title">Work Completed This Month</h2>
+        <p class="section-subtitle">Deliverables checklist and task completion progress executed for your project</p>
+      </div>
+      <div class="work-completed-grid" id="work-completed-container">
+        <!-- Dynamically populated -->
+      </div>
+    </section>
+    
+    <!-- SECTION 3: TARGET KEYWORD RANKINGS -->
+    <section class="dashboard-section" id="sec-rankings">
+      <div class="section-info">
+        <h2 class="section-title">Target Keyword Rankings</h2>
+        <p class="section-subtitle">Search positions of primary high-intent focus keywords driving local business traffic</p>
+      </div>
+      <div class="card rankings-table-card">
+        <div class="modern-table-wrapper">
+          <table class="modern-table" id="keyword-rankings-table">
+            <thead>
+              <tr>
+                <th>Keyword</th>
+                <th>Current Position</th>
+                <th>Search Intent</th>
+                <th>Target Landing Page</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+    
+    <!-- SECTION 4: KEYWORD GROWTH JOURNEY -->
+    <section class="dashboard-section" id="sec-journey">
+      <div class="section-info">
+        <h2 class="section-title">Keyword Growth Journey</h2>
+        <p class="section-subtitle">Long-term ranking improvements showing progress from starting position to today</p>
+      </div>
+      <div class="journey-grid" id="journey-container">
+        <!-- Dynamically populated -->
+      </div>
+    </section>
+    
+    <!-- SECTION 5: ORGANIC GROWTH OVERVIEW -->
+    <section class="dashboard-section" id="sec-growth">
+      <div class="section-info">
+        <h2 class="section-title">Organic Growth Overview</h2>
+        <p class="section-subtitle">Long-term traffic, leads and interaction growth trends over 6 to 12 months</p>
+      </div>
+      
+      <div class="organic-overview-grid">
+        <!-- KPI Cards left column -->
+        <div class="organic-overview-left" id="growth-kpis-container">
+          <!-- Dynamically populated -->
+        </div>
+        
+        <!-- Long term chart right column -->
+        <div class="card organic-overview-right">
+          <div class="chart-header-group">
+            <span class="chart-header-title">Organic Clicks & Traffic Growth Trends</span>
+            <div class="chart-period-tabs" id="organic-chart-tabs">
+              <button class="chart-tab-btn active" data-period="12m">12 Months</button>
+              <button class="chart-tab-btn" data-period="6m">6 Months</button>
+            </div>
+          </div>
+          <div class="organic-chart-container">
+            <canvas id="organicGrowthChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- SECTION 6: TOP PERFORMING PAGES -->
+    <section class="dashboard-section" id="sec-pages">
+      <div class="section-info">
+        <h2 class="section-title">Top Performing Pages</h2>
+        <p class="section-subtitle">Primary landing pages driving organic visibility, clicks, and consumer enquiries</p>
+      </div>
+      <div class="top-pages-grid" id="top-pages-container">
+        <!-- Dynamically populated -->
+      </div>
+    </section>
+    
+    <!-- SECTION 7: GOOGLE BUSINESS PROFILE PERFORMANCE -->
+    <section class="dashboard-section" id="sec-gbp">
+      <div class="section-info">
+        <h2 class="section-title">Google Business Profile Performance</h2>
+        <p class="section-subtitle">Local search visibility, direction requests, phone calls and ratings summary</p>
+      </div>
+      <div class="gbp-grid">
+        <div class="gbp-left-stats" id="gbp-stats-container">
+          <!-- Dynamically populated -->
+        </div>
+        <div class="card gbp-right-chart">
+          <span class="chart-header-title" style="display: block; margin-bottom: 16px;">Local Actions Distribution Trend</span>
+          <div class="organic-chart-container">
+            <canvas id="gbpActionsChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- SECTION 8: SEO INSIGHTS & OPPORTUNITIES -->
+    <section class="dashboard-section" id="sec-insights">
+      <div class="section-info">
+        <h2 class="section-title">SEO Insights & Opportunities</h2>
+        <p class="section-subtitle">Plain-English, executive-friendly breakdown of what worked, new opportunities, and challenges</p>
+      </div>
+      <div class="insights-grid" id="insights-container">
+        <!-- Dynamically populated -->
+      </div>
+    </section>
+    
+    <!-- SECTION 9: NEXT MONTH SEO ROADMAP -->
+    <section class="dashboard-section" id="sec-roadmap">
+      <div class="section-info">
+        <h2 class="section-title">Next Month SEO Roadmap</h2>
+        <p class="section-subtitle">Weekly scheduling of upcoming content creations, optimizations, and technical updates</p>
+      </div>
+      <div class="card">
+        <div class="roadmap-timeline" id="roadmap-timeline-container">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+    </section>
+    
+  </main>
+  
+  <!-- DETAIL POPUP MODAL -->
+  <div class="modal-overlay" id="activity-detail-modal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <span class="modal-title" id="mdl-activity-title">Activity Title</span>
+          <span class="modal-sub" id="mdl-activity-date">September 12, 2026</span>
+        </div>
+        <div class="modal-close-trigger" id="mdl-close-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width: 18px; height: 18px;">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+          </svg>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="modal-desc-row">
+          <span class="modal-desc-lbl">Work Completed</span>
+          <p class="modal-desc-text" id="mdl-activity-desc">Detailed work description goes here...</p>
+        </div>
+        <div class="modal-badge-group">
+          <div class="modal-desc-row">
+            <span class="modal-desc-lbl">Category</span>
+            <span class="calendar-event-tag" id="mdl-activity-cat" style="display: inline-block; width: max-content;">Blog Published</span>
+          </div>
+          <div class="modal-desc-row">
+            <span class="modal-desc-lbl">Status</span>
+            <span class="badge-status status-completed" id="mdl-activity-status">Completed</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="reports.js"></script>
+  <script src="charts.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
